@@ -1,0 +1,31 @@
+#include <Servo.h>
+
+Servo esc; // Create a Servo object
+
+void setup() {
+esc.attach(9); // Attach the ESC to pin 9 on the Arduino
+esc.writeMicroseconds(1500); // Initialize the motor to a neutral position
+delay(2000); // Wait for 2 seconds
+}
+
+void loop() {
+int throttle = 1500; // Neutral position, motor is not spinning
+esc.writeMicroseconds(throttle); // Send PWM signal to control the motor
+
+// Delay for a certain period of time
+delay(1000);
+
+// Accelerate the motor by increasing the PWM signal
+throttle = 1600;
+esc.writeMicroseconds(throttle);
+
+// Delay for a certain period of time
+delay(1000);
+
+// Decelerate the motor by decreasing the PWM signal
+throttle = 1400;
+esc.writeMicroseconds(throttle);
+
+// Delay for a certain period of time
+delay(1000);
+}
